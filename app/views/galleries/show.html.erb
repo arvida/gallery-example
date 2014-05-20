@@ -1,0 +1,23 @@
+<h2><%= @gallery.name %></h2>
+
+<p>Share this gallery: <%= link_to gallery_url(@gallery) %></p>
+
+<%= form_for @image do |f| %>
+  <%= f.hidden_field :gallery_id, value: @gallery.id %>
+
+  <div>
+    <%= f.label :filepicker_url, "Upload a image:" %>
+    <%= f.filepicker_field :filepicker_url, name: "image[filepicker_url]"
+    %>
+  </div>
+
+  <%= f.submit "Add a image" %>
+<% end %>
+
+<ul>
+  <% @gallery.images.each do |image| %>
+    <li>
+    <%= filepicker_image_tag image.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+    </li>
+  <% end %>
+</ul>

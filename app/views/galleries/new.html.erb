@@ -1,0 +1,8 @@
+<h2>Create new gallery</h2>
+
+<%= form_for @gallery do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.submit "Create gallery" %>
+<% end %>
